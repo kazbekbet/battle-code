@@ -6,10 +6,11 @@ import TasksPage from "../pages/TasksPage";
 import AuthPage from "../pages/AuthPage";
 import HomePage from "../pages/HomePage";
 import { Protected } from "./routing/Protected";
+import { ConfigProvider } from "antd";
 
 export default function App() {
   return (
-    <>
+    <ConfigProvider>
       <header>
         <Link to="/">Home</Link>
         <Link to="/auth">Auth</Link>
@@ -38,6 +39,6 @@ export default function App() {
         />
         <Route path="/game" element={<GamePage />} />
       </Routes>
-    </>
+    </ConfigProvider>
   );
 }

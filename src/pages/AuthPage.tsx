@@ -1,5 +1,11 @@
+import { AuthWidget } from "../widgets/auth";
+
 const AuthPage = () => {
-  return <div>AuthPage</div>;
+  return (
+    <div>
+      <AuthWidget />
+    </div>
+  );
 };
 
 export default AuthPage;
