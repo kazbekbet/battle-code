@@ -15,7 +15,7 @@ export function AuthWidget() {
   };
 
   return (
-    <Space direction="vertical">
+    <Space direction="vertical" style={{padding: '100px', background:"white", borderRadius: '20px'}}>
       <Typography.Title>АВТОРИЗАЦИЯ</Typography.Title>
       <Input
         placeholder="Введите логин"
