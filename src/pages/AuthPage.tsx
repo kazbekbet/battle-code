@@ -1,9 +1,9 @@
 import { AuthWidget } from "../widgets/auth";
-
+import "./styles/pages.css";
 
 const AuthPage = () => {
   return (
-    <div style={{ width: '100%', display: 'grid', justifyContent: 'center', alignContent: 'center', height: '100vh' }}>
+    <div className="login-container">
       <AuthWidget />
     </div>
   );

@@ -1,16 +1,14 @@
-import {Button, Input, Space} from "antd";
+import { Input } from "antd";
 import { ChangeEvent, useState } from "react";
-import { LoginUser } from "../../features/login";
 import { LoginCard } from "../../shared/api/components/cards/LoginCard/LoginCard.tsx";
-import {useNavigate} from "react-router-dom";
+import { RegisterUser } from "../../features/register";
 
 interface CredentialsState {
   login: string;
   password: string;
 }
 
-export function AuthWidget() {
-  const navigate = useNavigate();
+export function RegisterWidget() {
   const [credentials, setCredentials] = useState<CredentialsState>({
     login: "",
     password: "",
@@ -22,25 +20,23 @@ export function AuthWidget() {
     };
 
   return (
-    <LoginCard title="Авторизация">
+    <LoginCard title="Регистрация">
       <Input
-        placeholder="Введите логин"
+        placeholder="Придумайте логин"
         onChange={handleChangeField("login")}
         value={credentials.login}
       />
       <Input
-        placeholder="Введите пароль"
+        placeholder="Придумайте пароль"
         onChange={handleChangeField("password")}
         value={credentials.password}
+        type="password"
       />
-      <Space>
-        <LoginUser
-          disabled={!(credentials.login && credentials.password)}
-          login={credentials.login}
-          password={credentials.password}
-        />
-        <Button type="text" onClick={() => navigate('/register')}>Регистрация</Button>
-      </Space>
+      <RegisterUser
+        disabled={!(credentials.login && credentials.password)}
+        login={credentials.login}
+        password={credentials.password}
+      />
     </LoginCard>
   );
 }

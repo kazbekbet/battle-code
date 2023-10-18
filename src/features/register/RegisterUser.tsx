@@ -8,13 +8,13 @@ interface Props {
   disabled?: boolean;
 }
 
-export function LoginUser({ login, password, disabled }: Props) {
+export function RegisterUser({ login, password, disabled }: Props) {
   const navigate = useNavigate();
   const [isLoading, setIsLoading] = useState(false);
 
-  const handleClickLogin = async () => {
+  const handleClickRegister = async () => {
     // TODO: добавить сервис.
-    console.log(`Попытка входа юзера с ${login} и ${password}`);
+    console.log(`Попытка зарегать юзера с ${login} и ${password}`);
     setIsLoading(true);
     await new Promise((res) => {
       setTimeout(res, 1000);
@@ -28,9 +28,9 @@ export function LoginUser({ login, password, disabled }: Props) {
       loading={isLoading}
       disabled={disabled}
       type="primary"
-      onClick={handleClickLogin}
+      onClick={handleClickRegister}
     >
-      Войти
+      Зарегистрироваться
     </Button>
   );
 }
