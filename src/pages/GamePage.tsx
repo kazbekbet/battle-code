@@ -1,5 +1,9 @@
+import { Battle } from "../widgets/battle";
+
 const GamePage = () => {
-  return <div>GamePage</div>;
+  return (
+    <Battle />
+  )
 };
 
 export default GamePage;
