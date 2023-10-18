@@ -1,1 +1,1 @@
-export { Battle } from './Battle.tsx';
+export { BattleWidget } from './BattleWidget.tsx';
