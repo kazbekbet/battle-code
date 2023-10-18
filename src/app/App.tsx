@@ -1,8 +1,7 @@
 export default function App() {
   return (
     <>
-      <p>EntryPoint</p>
+      <p>EntryPoint2</p>
     </>
-  )
+  );
 }
-
