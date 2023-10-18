@@ -10,6 +10,7 @@ import { ConfigProvider } from "antd";
 
 export default function App() {
   return (
+    <div style={{ background: '#F37022', height: '100vh' }}>
     <ConfigProvider>
       <header>
         <Link to="/">Home</Link>
@@ -32,13 +33,14 @@ export default function App() {
         <Route
           path="/create-task"
           element={
-            <Protected>
+
               <CreateTaskPage />
-            </Protected>
+
           }
         />
         <Route path="/game" element={<GamePage />} />
       </Routes>
     </ConfigProvider>
+    </div>
   );
 }
