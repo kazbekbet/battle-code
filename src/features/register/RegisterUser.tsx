@@ -2,25 +2,41 @@ import { Button } from "antd";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 
-interface Props {
-  login: string;
-  password: string;
+import { RegisterRequest } from "../../shared/api/services/interfaces";
+import { AuthService } from "../../shared/api/services/auth";
+
+interface Props extends RegisterRequest {
   disabled?: boolean;
 }
 
-export function RegisterUser({ login, password, disabled }: Props) {
+export function RegisterUser({ username, hash, disabled }: Props) {
   const navigate = useNavigate();
+
   const [isLoading, setIsLoading] = useState(false);
 
   const handleClickRegister = async () => {
-    // TODO: добавить сервис.
-    console.log(`Попытка зарегать юзера с ${login} и ${password}`);
+    console.log(`Попытка зарегать юзера с ${username} и ${hash}`);
+
     setIsLoading(true);
-    await new Promise((res) => {
-      setTimeout(res, 1000);
-    });
+
+    try {
+      await AuthService.register({
+        username,
+        hash,
+        avatar: "https://example.com/default-avatar.png",
+      });
+
+      // Имитируем задержку
+      await new Promise((res) => {
+        setTimeout(res, 1000);
+      });
+
+      navigate("/tasks");
+    } catch (error) {
+      console.error(error);
+    }
+
     setIsLoading(false);
-    navigate("/");
   };
 
   return (

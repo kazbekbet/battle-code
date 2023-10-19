@@ -34,8 +34,9 @@ export function RegisterWidget() {
       />
       <RegisterUser
         disabled={!(credentials.login && credentials.password)}
-        login={credentials.login}
-        password={credentials.password}
+        username={credentials.login}
+        hash={credentials.password}
+        avatar="https://example.com/default-avatar.png"
       />
     </LoginCard>
   );

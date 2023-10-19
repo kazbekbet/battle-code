@@ -1,8 +1,9 @@
-import {Button, Input, Space} from "antd";
+import { Button, Input, Space } from "antd";
 import { ChangeEvent, useState } from "react";
-import { LoginUser } from "../../features/login";
+// import { LoginUser } from "../../features/login";
 import { LoginCard } from "../../shared/api/components/cards/LoginCard/LoginCard.tsx";
-import {useNavigate} from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+import { AuthService } from "../../shared/api/services/auth.ts";
 
 interface CredentialsState {
   login: string;
@@ -21,6 +22,19 @@ export function AuthWidget() {
       setCredentials((prev) => ({ ...prev, [field]: e.target.value }));
     };
 
+  const login = async () => {
+    try {
+      await AuthService.login({
+        username: credentials.login,
+        password: credentials.password,
+      });
+
+      navigate("/");
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
   return (
     <LoginCard title="Авторизация">
       <Input
@@ -34,12 +48,15 @@ export function AuthWidget() {
         value={credentials.password}
       />
       <Space>
-        <LoginUser
+        <Button
           disabled={!(credentials.login && credentials.password)}
-          login={credentials.login}
-          password={credentials.password}
-        />
-        <Button type="text" onClick={() => navigate('/register')}>Регистрация</Button>
+          onClick={login}
+        >
+          Войти
+        </Button>
+        <Button type="text" onClick={() => navigate("/register")}>
+          Регистрация
+        </Button>
       </Space>
     </LoginCard>
   );
