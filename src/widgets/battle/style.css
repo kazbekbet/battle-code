@@ -1,12 +1,12 @@
-.container {
-  margin: auto;
-  max-width: 1200px;
-  border-radius: 20px;
-  padding: 50px;
-  background: #fff;
-}
-
 .code-editor-container {
   display: flex;
   justify-content: space-between;
+}
+
+.user-name {
+  margin-bottom: 20px;
+  color: rgba(0, 0, 0, 0.88);
+  font-weight: 600;
+  font-size: 19px;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
 }

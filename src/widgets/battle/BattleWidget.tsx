@@ -1,6 +1,7 @@
 import { CodeEditor } from "../../shared/api/components/CodeEditor/";
 import { CodeSubmit } from "../../features/CodeSubmit";
 import { useState } from "react";
+import { user } from "../../pages/dummy-data";
 import "./style.css";
 
 export function BattleWidget() {
@@ -17,16 +18,22 @@ export function BattleWidget() {
   }
 
   return (
-    <div className="container">
+    <>
       <div className="code-editor-container">
-        <CodeEditor value={firstPlayerCode} setValue={setFirstPlayerCode} />
-        <CodeEditor
-          value={secondPlayerCode}
-          setValue={setSecondPlayerCode}
-          readOnly
-        />
+        <div>
+          <h3 className="user-name">{user.login}</h3>
+          <CodeEditor value={firstPlayerCode} setValue={setFirstPlayerCode} />
+        </div>
+        <div>
+          <h3 className="user-name">{user.login}</h3>
+          <CodeEditor
+            value={secondPlayerCode}
+            setValue={setSecondPlayerCode}
+            readOnly
+          />
+        </div>
       </div>
       <CodeSubmit handleClick={handleCodeSubmit} />
-    </div>
+    </>
   );
 }
